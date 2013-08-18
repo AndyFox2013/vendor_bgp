@@ -15,6 +15,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_COPY_FILES += \
     vendor/bgp/prebuilt/common/bin/backuptool.sh:system/bin/backuptool.sh \
     vendor/bgp/prebuilt/common/bin/backuptool.functions:system/bin/backuptool.functions 
+    
+# SuperSU
+PRODUCT_COPY_FILES += \
+    vendor/bgp/prebuilt/common/xbin/su:system/xbin/su \
+    vendor/bgp/prebuilt/common/xbin/daemonsu:system/xbin/daemonsu \
+    vendor/bgp/prebuilt/common/app/Superuser.apk:system/app/Superuser.apk
 
 # BGP-specific init file
 PRODUCT_COPY_FILES += \
@@ -52,16 +58,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/bgp/prebuilt/common/app/NovaLauncher.apk:system/app/NovaLauncher.apk
 
-# Embed SuperUser
-SUPERUSER_EMBEDDED := true
-
 # Required packages
 PRODUCT_PACKAGES += \
     Camera \
-    Development \
-    SpareParts \
-    Superuser \
-    su
+    Development 
 
 # Optional packages
 PRODUCT_PACKAGES += \
@@ -129,8 +129,8 @@ ifdef BGP_BUILD_EXTRA
 endif
 
 # Set all versions
-BGP_VERSION := BGP-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-$(BGP_BUILD_TYPE)$(BGP_POSTFIX)
-BGP_MOD_VERSION := BGP-$(BGP_BUILD)-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-$(BGP_BUILD_TYPE)$(BGP_POSTFIX)
+BGP_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-$(BGP_BUILD_TYPE)$(BGP_POSTFIX)
+BGP_MOD_VERSION := $(BGP_BUILD)-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-$(BGP_BUILD_TYPE)$(BGP_POSTFIX)
 
 PRODUCT_PROPERTY_OVERRIDES += \
     BUILD_DISPLAY_ID=$(BUILD_ID) \
