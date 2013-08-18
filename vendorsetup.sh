@@ -1,0 +1,2 @@
+add_lunch_combo bgp_m7ul-userdebug
+add_lunch_combo bgp_mako-userdebug
